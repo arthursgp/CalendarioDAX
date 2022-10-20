@@ -1,0 +1,16 @@
+# CalendarioDAX
+Calendario = 
+GENERATE(
+    CALENDARAUTO(),
+    ROW(
+        "Ano",YEAR([Date]),
+        "Mês",MONTH([Date]),
+        "Nome Mês",FORMAT([Date],"mmm"),
+        "Dia",DAY([Date]),
+        "Nome do Dia",FORMAT([Date],"ddd"),
+        "Num Dia da Semana",WEEKDAY([Date]),
+        "Ano e Mes",FORMAT([Date],"mmm-yyyy"),
+        "Ano e Mes Classif",YEAR([Date]) * 100 + MONTH([Date]),
+        "Trimestre",QUARTER([Date])
+    )
+)
