@@ -1,0 +1,21 @@
+# CalendarioDAX
+Calendario =
+ADDCOLUMNS(
+    ADDCOLUMNS(
+        CALENDARAUTO(),
+        "Ano",YEAR([Date]),
+        "Mês",MONTH([Date]),
+        "Trimestre",QUARTER([Date]),
+        "Dia",DAY([Date]),
+        "Mês e Ano Abrev",FORMAT([Date],"mmm-yyyy"),
+        "Trimestre Abrev",FORMAT([Date],"Tq"),
+        "Trim e Ano Abrev",FORMAT([Date],"Tq-yyyy"),
+        "Nome Mês",FORMAT([Date],"mmm"),
+        "Nome Dia",FORMAT([Date],"ddd"),
+        "Num Dia Semana",WEEKDAY([Date]),
+        "Num Semana Ano",WEEKNUM([Date])
+    ),
+    "Classif Mês e Ano",[Ano]*100+[Mês],
+    "Classif Trim e Ano",[Ano]*100+[Trimestre],
+    "Dia Util",IF([Num Dia Semana] IN {1,7},"Não","Sim")
+)
